@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  /* 10px on top and bottom */
+  margin: 10px 0;
+  /* Wraps around input, label, span text*/
+  width: 200px;
+}
+
+/* delete checkbox */
+
+.toggle {
+  visibility: hidden;
+}
+
+.label {
+  position: relative;
+  background-color: rgb(88, 88, 88);
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 15px 0;
+  width: 80px;
+  height: 40px;
+}
+
+/* if checkbox  "toggle" is checked change color */
+.toggle:checked + .label {
+  background-color: rebeccapurple;
+}
+
+.ball {
+  background: white;
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  /* Absolute cuz we are
+  putting it inside the label */
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  align-items: center;
+  justify-content: center;
+  /* add animation */
+  animation: slideOff 0.3s linear forwards;
+} 
+
+/* to move ball back and forth
+run slideOn */
+.toggle:checked + .label .ball{
+  animation: slideOn 0.3s linear forwards;
+}
+
+/* Adding animation */
+@keyframes slideOn {
+  /* change the translate x to move forward and backward */
+  0% {
+    transform: translateX(0) scale(1)
+  }
+  50% {
+    transform: translateX(20px) scale(1.2);
+  }
+  100% {
+    transform: translateX(40px) scale(1);
+  }
+}
+
+@keyframes slideOff {
+  0% {
+    transform: translateX(40px) scale(1)
+  }
+  50% {
+    transform: translateX(20px) scale(1.2);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
